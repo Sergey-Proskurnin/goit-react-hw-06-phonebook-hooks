@@ -45,10 +45,9 @@
   },
   "devDependencies": {
     "eslint": "^7.28.0",
-    "husky": "^7.0.0",
+    "husky": "^7.0.1",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.3.2",
-    "redux-devtools-extension": "^2.13.9"
+    "prettier": "^2.3.2"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",

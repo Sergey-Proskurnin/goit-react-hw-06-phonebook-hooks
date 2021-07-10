@@ -6,7 +6,7 @@ const addContact = createAction('contacts/add', ({ name, number }) => ({
     name,
     number,
     id: uuidv4(),
-  ,
+  },
 }));
 const deleteContact = createAction('contacts/delete');
 const changeFilter = createAction('contacts/changeFilter');
