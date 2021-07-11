@@ -30,7 +30,7 @@ Filter.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  filter: state.contacts.filter,
+  filter: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({

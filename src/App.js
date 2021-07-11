@@ -15,14 +15,14 @@ class App extends Component {
     filter: PropTypes.string,
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    const nextContacts = this.props.contacts;
-    const prevContacts = prevProps.contacts;
+  // componentDidUpdate(prevProps, prevState) {
+  //   const nextContacts = this.props.contacts;
+  //   const prevContacts = prevProps.contacts;
 
-    if (nextContacts !== prevContacts) {
-      localStorage.setItem('contacts', JSON.stringify(nextContacts));
-    }
-  }
+  //   if (nextContacts !== prevContacts) {
+  //     localStorage.setItem('contacts', JSON.stringify(nextContacts));
+  //   }
+  // }
 
   render() {
     return (
@@ -37,7 +37,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  contacts: state.contacts.items,
+  contacts: state.items,
 });
 
 export default connect(mapStateToProps)(App);

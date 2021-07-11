@@ -13,7 +13,7 @@ const getVisibleContacts = (contacts, filter) => {
   );
 };
 
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
+const mapStateToProps = ({ items, filter }) => ({
   contacts: getVisibleContacts(items, filter),
 });
 

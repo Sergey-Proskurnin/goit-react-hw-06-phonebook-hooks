@@ -105,7 +105,7 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  contacts: state.contacts.items,
+  contacts: state.items,
 });
 
 const mapDispatchToProps = dispatch => ({
