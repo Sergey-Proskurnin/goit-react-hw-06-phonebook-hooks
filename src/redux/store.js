@@ -12,12 +12,25 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+//----------------test-middleware--------------------------
+// const myMiddleware = store => next => action => {
+//   console.log('Hello i am myMiddleware');
+//   next(action)
+// }
+// const myMiddlewareTwo = store => next => action => {
+//   console.log('Hello i am myMiddlewareTwo');
+//   next(action)
+// }
+//-------------------------------------------------------------
+
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
+  // myMiddleware,
+  //  myMiddlewareTwo
 ];
 
 const persistConfig = {
@@ -27,7 +40,7 @@ const persistConfig = {
 };
 
 const store = configureStore({
-  reducer: persistReducer(persistConfig, contactsReducer),
+  reducer: { contacts: persistReducer(persistConfig, contactsReducer) },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
