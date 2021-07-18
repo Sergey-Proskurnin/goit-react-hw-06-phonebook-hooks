@@ -1,9 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 
 import s from './ElementContactList.module.css';
+import contactsAction from 'redux/contacts/contacts-actions';
 
-const ElementContactList = ({ contacts, deleteContact }) => {
+const getVisibleContacts = (contacts, filter) => {
+  const normalizedFilter = filter.toLowerCase().trim();
+
+  return contacts.filter(
+    contact =>
+      contact.name.toLowerCase().includes(normalizedFilter) ||
+      contact.number.includes(filter),
+  );
+};
+
+const ElementContactList = () => {
+  const contacts = useSelector(({ contacts: { items, filter } }) =>
+    getVisibleContacts(items, filter),
+  );
+  const dispatch = useDispatch();
+
   return contacts.map(({ name, number, id }) => {
     return (
       <li className={s.item} key={id}>
@@ -12,7 +29,7 @@ const ElementContactList = ({ contacts, deleteContact }) => {
         <button
           type="button"
           className={s.btnList}
-          onClick={() => deleteContact(id)}
+          onClick={() => dispatch(contactsAction.deleteContact(id))}
         >
           Delete
         </button>

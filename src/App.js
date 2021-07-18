@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import './App.css';
 
@@ -9,35 +7,15 @@ import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import Container from 'components/Container';
 
-class App extends Component {
-  static propTypes = {
-    contacts: PropTypes.array,
-    filter: PropTypes.string,
-  };
+const App = () => {
+  return (
+    <Container title="Phonebook">
+      <ContactForm />
+      <h2 className="title">Contacts</h2>
+      <Filter />
+      <ContactList />
+    </Container>
+  );
+};
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const nextContacts = this.props.contacts;
-  //   const prevContacts = prevProps.contacts;
-
-  //   if (nextContacts !== prevContacts) {
-  //     localStorage.setItem('contacts', JSON.stringify(nextContacts));
-  //   }
-  // }
-
-  render() {
-    return (
-      <Container title="Phonebook">
-        <ContactForm />
-        <h2 className="title">Contacts</h2>
-        <Filter />
-        <ContactList />
-      </Container>
-    );
-  }
-}
-
-const mapStateToProps = state => ({
-  contacts: state.items,
-});
-
-export default connect(mapStateToProps)(App);
+export default App;
